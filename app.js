@@ -15,6 +15,7 @@ app.get("/showcasegit",function(req,res){
     });
 });
 
-app.listen(8081,function(){
+app.listen(3306,function(){
     console.log('seja bem vindo')
 });
+
