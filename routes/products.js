@@ -7,6 +7,7 @@ const { upload } = require("../config/cloudinary");
 
 // Produtos
 router.get("/", productController.index);
+router.get("/create", (req, res) => res.json({ ok: true }));
 router.get("/:id", productController.show);
 router.post("/", productController.create);
 router.put("/:id", productController.update);
