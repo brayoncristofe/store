@@ -14,8 +14,10 @@ async function index(req, res) {
 async function create(req, res) {
     try {
         const image = await ProductImage.create({
-            ...req.body,
-            product_id: req.params.product_id
+            product_id: req.params.product_id,
+            image_url: req.file.path,       // URL do Cloudinary
+            is_main: req.body.is_main || false,
+            position: req.body.position || 0
         });
         res.status(201).json(image);
     } catch (err) {

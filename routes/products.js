@@ -3,6 +3,7 @@ const router = express.Router();
 const productController = require("../controllers/productController");
 const productImageController = require("../controllers/productImageController");
 const productVariantController = require("../controllers/productVariantController");
+const { upload } = require("../config/cloudinary");
 
 // Produtos
 router.get("/", productController.index);
@@ -13,7 +14,7 @@ router.delete("/:id", productController.remove);
 
 // Imagens do produto
 router.get("/:product_id/images", productImageController.index);
-router.post("/:product_id/images", productImageController.create);
+router.post("/:product_id/images", upload.single("image"), productImageController.create);
 router.delete("/:product_id/images/:id", productImageController.remove);
 
 // Variações do produto
